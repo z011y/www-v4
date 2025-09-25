@@ -54,12 +54,22 @@ export default function Home({
   };
 
   function renderProjects() {
-    const projectComponents = projects.map((project) => {
-      const isFocused = focusedProject === project.id;
-      return (
-        <ProjectCard key={project.id} project={project} isFocused={isFocused} />
-      );
-    });
+    const projectComponents = projects
+      .sort((a, b) => (b.titleId ?? 0) - (a.titleId ?? 0))
+      .map((project) => {
+        const isFocused = focusedProject === project.id;
+        const titleName = titles.filter(
+          (title) => title.id === project.titleId
+        )[0].name;
+        return (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            isFocused={isFocused}
+            titleName={titleName}
+          />
+        );
+      });
     return projectComponents;
   }
 
@@ -71,8 +81,8 @@ export default function Home({
       <Header></Header>
       <main className="w-full flex flex-col justify-center">
         {/* About */}
-        <section id="about" className="w-full pt-28">
-          <div className="flex flex-col justify-center items-center gap-y-4 text-center h-96 m-16">
+        <section id="home" className="w-full pt-28">
+          <div className="flex flex-col justify-center items-center gap-y-4 text-center h-[28rem] m-16">
             <p className="opacity-60">Hi, my name is</p>
             <h1>Cameron Zollinger</h1>
             <span className="flex gap-x-1">

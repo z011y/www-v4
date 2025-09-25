@@ -29,7 +29,7 @@ export default function Header() {
         </div>
       </div>
       <div className="w-full flex px-8 sm:px-0 sm:justify-center gap-x-16 border-b border-black/10 dark:border-white/10 bg-white dark:bg-black py-2 font-mono text-sm uppercase tracking-wider overflow-x-scroll">
-        <a href="#about">About</a>
+        <a href="#home">Home</a>
         <a href="#career">Career</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
