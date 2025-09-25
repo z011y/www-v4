@@ -18,11 +18,7 @@ export default function CompanySection({
   const renderTitles = () => {
     const filteredTitles = titles
       .filter((title) => title.companyId === company.id)
-      .sort((a: SelectTitle, b: SelectTitle): number => {
-        const dateA = new Date(a.startDate);
-        const dateB = new Date(b.startDate);
-        return Number(dateB) - Number(dateA);
-      });
+      .sort((a, b) => (b.id ?? 0) - (a.id ?? 0));
     const titleComponents = filteredTitles.map(
       (title: SelectTitle, i: number) => {
         if (
@@ -33,7 +29,7 @@ export default function CompanySection({
           const rolesObject = title.roles;
           const responsibilities = rolesObject["responsibilities"];
           const filteredProjects = projects.filter(
-            (project) => project.titleId === title.id,
+            (project) => project.titleId === title.id
           );
           if (
             responsibilities &&
@@ -61,7 +57,7 @@ export default function CompanySection({
             );
           }
         }
-      },
+      }
     );
 
     return titleComponents;
@@ -80,7 +76,7 @@ export default function CompanySection({
               {responsibility?.toString()}
             </li>
           );
-        },
+        }
       );
       return listItems;
     }
@@ -101,7 +97,7 @@ export default function CompanySection({
             </a>
           </div>
         );
-      },
+      }
     );
     return projectComponents;
   };
