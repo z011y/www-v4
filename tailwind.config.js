@@ -10,8 +10,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     fontFamily: {
+      serif: ["'Jacquard 12'", "serif"],
       sans: ["Inter", "-apple-system", "Segoe UI", "sans-serif"],
-      mono: ["Fira Code", "monospace"],
+      mono: ["'Fira Code'", "monospace"],
     },
     colors: {
       transparent: "transparent",
@@ -31,7 +32,7 @@ module.exports = {
         1000: "rgb(44, 44, 46)",
         1100: "rgb(28, 28, 30)",
       },
-      blue: "#0A84FF",
+      blue: "#8172F4",
     },
     extend: {},
   },

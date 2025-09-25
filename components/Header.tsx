@@ -14,7 +14,7 @@ export default function Header() {
       <div className="flex justify-between border-b border-gray-200 dark:border-gray-1000 pb-4 px-8 lg:px-16">
         <div className="flex gap-x-2">
           <LogoIcon />
-          <LogoText />
+          <h4 className="lowercase opacity-60">z011y</h4>
         </div>
         <div className="flex gap-x-4">
           {theme.color ? <ThemeToggle /> : null}

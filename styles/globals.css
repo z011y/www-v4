@@ -5,7 +5,6 @@
 @layer base {
   h1 {
     @apply text-7xl;
-    @apply font-black;
     @apply tracking-tight;
   }
   h2 {
@@ -14,14 +13,25 @@
     @apply tracking-tight;
   }
   h3 {
+    @apply text-2xl;
+    @apply font-bold;
+    @apply tracking-tight;
+  }
+  h4 {
     @apply text-base;
     @apply font-mono;
     @apply tracking-wider;
     @apply uppercase;
   }
-  h4 {
+  h5 {
     @apply text-base;
     @apply font-bold;
     @apply tracking-tight;
+  }
+  a.anchor {
+      display: block;
+      position: relative;
+      top: -208px;
+      visibility: hidden;
   }
 }
