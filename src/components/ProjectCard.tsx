@@ -1,6 +1,6 @@
 import * as Icons from "@primer/octicons-react";
 
-import { SelectProject } from "../db/schema";
+import { SelectProject } from "../../db/schema";
 import Badge from "./Badge";
 
 interface ProjectCardProps {

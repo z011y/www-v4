@@ -1,6 +1,6 @@
 import * as Icons from "@primer/octicons-react";
 
-import { SelectCompany, SelectProject, SelectPosition } from "../db/schema";
+import { SelectCompany, SelectProject, SelectPosition } from "../../db/schema";
 
 interface CompanySectionProps {
   company: SelectCompany;

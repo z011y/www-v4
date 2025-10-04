@@ -4,7 +4,7 @@ import { MarkGithubIcon } from "@primer/octicons-react";
 import LogoIcon from "./LogoIcon";
 import LogoText from "./LogoText";
 import ThemeToggle from "./ThemeToggle";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 export default function Header() {
   const theme = useContext(ThemeContext);

@@ -1,33 +1,25 @@
-import type { NextPage, InferGetStaticPropsType } from "next";
-import Head from "next/head";
+"use client";
+
 import { useState } from "react";
 import * as Icons from "@primer/octicons-react";
 
-import { db } from "../db/db";
-import { company, project, position } from "../db/schema";
-import Header from "../components/Header";
-import CompanySection from "../components/CompanySection";
-import ProjectCard from "../components/ProjectCard";
-import SkillsSection from "../components/SkillsSection";
+import { SelectCompany, SelectProject, SelectPosition } from "../../db/schema";
+import Header from "./Header";
+import CompanySection from "./CompanySection";
+import ProjectCard from "./ProjectCard";
+import SkillsSection from "./SkillsSection";
 
-export async function getStaticProps() {
-  let companies = await db.select().from(company);
-  let projects = await db.select().from(project);
-  let positions = await db.select().from(position);
-  companies = JSON.parse(JSON.stringify(companies));
-  projects = JSON.parse(JSON.stringify(projects));
-  positions = JSON.parse(JSON.stringify(positions));
-
-  return {
-    props: { companies, projects, positions },
-  };
+interface HomeClientProps {
+  companies: SelectCompany[];
+  projects: SelectProject[];
+  positions: SelectPosition[];
 }
 
-export default function Home({
+export default function HomeClient({
   companies,
   projects,
   positions,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: HomeClientProps) {
   const [focusedProject, setFocusedProject] = useState(0);
 
   const renderCompanies = () => {
@@ -74,9 +66,6 @@ export default function Home({
 
   return (
     <div>
-      <Head>
-        <title>Cameron Zollinger | z011y</title>
-      </Head>
       <Header></Header>
       <main className="flex w-full flex-col justify-center">
         {/* About */}
