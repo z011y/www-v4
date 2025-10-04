@@ -1,42 +1,73 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Font families */
+  --font-family-serif: "Jacquard 12", serif;
+  --font-family-sans: Inter, -apple-system, "Segoe UI", sans-serif;
+  --font-family-mono: "Fira Code", monospace;
+
+  /* Colors */
+  --color-gray-100: rgb(242, 242, 247);
+  --color-gray-200: rgb(229, 229, 234);
+  --color-gray-300: rgb(209, 209, 214);
+  --color-gray-400: rgb(199, 199, 204);
+  --color-gray-500: rgb(174, 174, 178);
+  --color-gray-600: rgb(142, 142, 147);
+  --color-gray-700: rgb(99, 99, 102);
+  --color-gray-800: rgb(72, 72, 74);
+  --color-gray-900: rgb(58, 58, 60);
+  --color-gray-1000: rgb(44, 44, 46);
+  --color-gray-1100: rgb(28, 28, 30);
+  --color-blue: #8172f4;
+}
 
 @layer base {
   h1 {
-    @apply text-7xl;
-    @apply tracking-tight;
+    font-size: 4.5rem;
+    line-height: 1;
+    letter-spacing: -0.025em;
   }
-
   h2 {
-    @apply text-3xl;
-    @apply font-bold;
-    @apply tracking-tight;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
-
   h3 {
-    @apply text-2xl;
-    @apply font-bold;
-    @apply tracking-tight;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
-
   h4 {
-    @apply text-base;
-    @apply font-mono;
-    @apply tracking-wider;
-    @apply uppercase;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: var(--font-family-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
-
   h5 {
-    @apply text-base;
-    @apply font-bold;
-    @apply tracking-tight;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
-
   a.anchor {
     display: block;
     position: relative;
     top: -208px;
     visibility: hidden;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

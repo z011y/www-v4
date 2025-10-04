@@ -1,35 +1,35 @@
 import * as Icons from "@primer/octicons-react";
 
-import { SelectCompany, SelectProject, SelectTitle } from "../db/schema";
+import { SelectCompany, SelectProject, SelectPosition } from "../db/schema";
 
 interface CompanySectionProps {
   company: SelectCompany;
   projects: SelectProject[];
-  titles: SelectTitle[];
+  positions: SelectPosition[];
   focusProject: (projectName: number) => void;
 }
 
 export default function CompanySection({
   company,
   projects,
-  titles,
+  positions,
   focusProject,
 }: CompanySectionProps) {
-  const renderTitles = () => {
-    const filteredTitles = titles
-      .filter((title) => title.companyId === company.id)
+  const renderpositions = () => {
+    const filteredpositions = positions
+      .filter((position) => position.companyId === company.id)
       .sort((a, b) => (b.id ?? 0) - (a.id ?? 0));
-    const titleComponents = filteredTitles.map(
-      (title: SelectTitle, i: number) => {
+    const positionComponents = filteredpositions.map(
+      (position: SelectPosition, i: number) => {
         if (
-          title.roles &&
-          typeof title.roles === "object" &&
-          !Array.isArray(title.roles)
+          position.roles &&
+          typeof position.roles === "object" &&
+          !Array.isArray(position.roles)
         ) {
-          const rolesObject = title.roles;
+          const rolesObject = position.roles;
           const responsibilities = rolesObject["responsibilities"];
           const filteredProjects = projects.filter(
-            (project) => project.titleId === title.id
+            (project) => project.positionId === position.id,
           );
           if (
             responsibilities &&
@@ -38,29 +38,29 @@ export default function CompanySection({
           ) {
             return (
               <div key={i}>
-                <div className="flex items-center gap-x-4 my-4">
-                  <div className="p-2 w-8 flex justify-center items-center rounded-full bg-gray-100 dark:bg-gray-1100">
+                <div className="my-4 flex items-center gap-x-4">
+                  <div className="flex w-8 items-center justify-center rounded-full bg-gray-100 p-2 dark:bg-gray-1100">
                     <Icons.MilestoneIcon />
                   </div>
-                  <h4>{title.name}</h4>
-                  <a className="anchor" id={`title-${title.id}`}></a>
+                  <h4>{position.name}</h4>
+                  <a className="anchor" id={`position-${position.id}`}></a>
                 </div>
-                <div className="mb-4 ml-4 pl-4 border-l border-gray-200 dark:border-gray-1000">
+                <div className="mb-4 ml-4 border-l border-gray-200 pl-4 dark:border-gray-1000">
                   <ul className="opacity-60">
                     {renderListItems(responsibilities)}
                   </ul>
                   <div className="flex flex-col">
-                    {renderProjects(filteredProjects, title.name)}
+                    {renderProjects(filteredProjects, position.name)}
                   </div>
                 </div>
               </div>
             );
           }
         }
-      }
+      },
     );
 
-    return titleComponents;
+    return positionComponents;
   };
 
   const renderListItems = (responsibilities: string[]) => {
@@ -76,7 +76,7 @@ export default function CompanySection({
               {responsibility?.toString()}
             </li>
           );
-        }
+        },
       );
       return listItems;
     }
@@ -97,18 +97,18 @@ export default function CompanySection({
             </a>
           </div>
         );
-      }
+      },
     );
     return projectComponents;
   };
 
   return (
-    <div className="px-8 lg:px-16 lg:w-2/3">
-      <div className="flex items-center gap-x-4 mt-8">
+    <div className="px-8 lg:w-2/3 lg:px-16">
+      <div className="mt-8 flex items-center gap-x-4">
         <h2>{company.name}</h2>
         <p className="text-sm opacity-60">{`${company.startDate} - ${company.endDate}`}</p>
       </div>
-      {renderTitles()}
+      {renderpositions()}
     </div>
   );
 }

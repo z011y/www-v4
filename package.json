@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --turbopack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint",
     "db:generate": "bunx drizzle-kit generate",
     "db:migrate": "bunx drizzle-kit migrate",
     "tf:plan": "cd infra && terraform plan",
@@ -14,23 +14,26 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
-    "@primer/octicons-react": "^17.12.0",
+    "@primer/octicons-react": "^19.18.0",
     "drizzle-orm": "^0.44.5",
     "next": "15.5.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
-    "@types/node": "18.0.3",
-    "@types/react": "18.0.15",
-    "@types/react-dom": "18.0.6",
-    "autoprefixer": "^10.4.21",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "drizzle-kit": "^0.31.4",
-    "eslint": "8.19.0",
-    "eslint-config-next": "12.2.1",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "eslint-config-prettier": "^10.1.8",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.17",
-    "typescript": "4.7.4"
-  },
-  "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
 }

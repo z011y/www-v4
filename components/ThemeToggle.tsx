@@ -5,6 +5,7 @@ import { ThemeContext } from "../context/ThemeContext";
 
 export default function ThemeToggle() {
   const theme = useContext(ThemeContext);
+
   return (
     <button
       onClick={() => (theme.color ? theme.toggleTheme(theme.color) : null)}

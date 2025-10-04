@@ -6,13 +6,13 @@ import Badge from "./Badge";
 interface ProjectCardProps {
   project: SelectProject;
   isFocused: boolean;
-  titleName: string;
+  positionName: string;
 }
 
 export default function ProjectCard({
   project,
   isFocused,
-  titleName,
+  positionName,
 }: ProjectCardProps) {
   const renderLanguages = () => {
     if (project.techStack && typeof project.techStack === "object") {
@@ -52,21 +52,21 @@ export default function ProjectCard({
 
   return (
     <div
-      className={`flex flex-col gap-y-4 bg-gray-100 dark:bg-gray-1100 rounded-2xl w-full p-8 ${
-        isFocused ? "border-blue border" : ""
+      className={`flex w-full flex-col gap-y-4 rounded-2xl bg-gray-100 p-8 dark:bg-gray-1100 ${
+        isFocused ? "border border-blue" : ""
       }`}
     >
-      <div className="flex justify-between items-start mb-4">
+      <div className="mb-4 flex items-start justify-between">
         <Icons.PackageIcon size="medium" />
         <h4>project</h4>
       </div>
       <a className="anchor" id={`project-${project.id}`}></a>
       <h2>{project.name}</h2>
-      {titleName ? (
+      {positionName ? (
         <div className="flex items-center gap-x-2">
           <Icons.MilestoneIcon />
-          <a className="text-blue" href={`#title-${project.titleId}`}>
-            {titleName}
+          <a className="text-blue" href={`#position-${project.positionId}`}>
+            {positionName}
           </a>
         </div>
       ) : null}

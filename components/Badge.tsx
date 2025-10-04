@@ -7,7 +7,7 @@ interface Props {
 
 export default function Badge({ text, icon }: Props) {
   return (
-    <div className="flex items-center gap-x-2 bg-gray-100 dark:bg-gray-1100 border border-gray-200 dark:border-gray-1000 w-fit px-4 py-2 rounded-lg whitespace-nowrap">
+    <div className="flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 bg-gray-100 px-4 py-2 whitespace-nowrap dark:border-gray-1000 dark:bg-gray-1100">
       {icon}
       <h5>{text}</h5>
     </div>

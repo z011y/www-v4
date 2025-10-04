@@ -10,8 +10,8 @@ export default function Header() {
   const theme = useContext(ThemeContext);
 
   return (
-    <header className="w-full fixed top-0 flex flex-col bg-white/75 dark:bg-black/75 backdrop-blur-lg saturate-150 pt-8 z-50">
-      <div className="flex justify-between border-b border-gray-200 dark:border-gray-1000 pb-4 px-8 lg:px-16">
+    <header className="fixed top-0 z-50 flex w-full flex-col bg-white/75 pt-8 saturate-150 backdrop-blur-lg dark:bg-black/75">
+      <div className="flex justify-between border-b border-gray-200 px-8 pb-4 lg:px-16 dark:border-gray-1000">
         <div className="flex gap-x-2">
           <LogoIcon />
           <h4 className="lowercase opacity-60">z011y</h4>
@@ -22,13 +22,13 @@ export default function Header() {
             href="https://github.com/z011y"
             target="_blank"
             rel="noreferrer"
-            className="hover:cursor-pointer"
+            className="flex items-center hover:cursor-pointer"
           >
             <MarkGithubIcon />
           </a>
         </div>
       </div>
-      <div className="w-full flex px-8 sm:px-0 sm:justify-center gap-x-16 border-b border-black/10 dark:border-white/10 bg-white dark:bg-black py-2 font-mono text-sm uppercase tracking-wider overflow-x-scroll">
+      <div className="flex w-full gap-x-16 overflow-x-scroll border-b border-black/10 bg-white px-8 py-2 font-mono text-sm tracking-wider uppercase sm:justify-center sm:px-0 dark:border-white/10 dark:bg-black">
         <a href="#home">Home</a>
         <a href="#career">Career</a>
         <a href="#projects">Projects</a>
