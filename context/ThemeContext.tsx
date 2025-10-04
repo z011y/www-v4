@@ -24,15 +24,19 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }
 
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = theme;
-    } else if (theme === "light") {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = theme;
-    } else {
-      const currentTheme = localStorage.theme || "light";
-      setTheme(currentTheme);
+    switch (theme) {
+      case "dark":
+        document.documentElement.classList.add("dark");
+        localStorage.theme = theme;
+        break;
+      case "light":
+        document.documentElement.classList.remove("dark");
+        localStorage.theme = theme;
+        break;
+      default:
+        const currentTheme = localStorage.theme || "light";
+        setTheme(currentTheme);
+        break;
     }
   }, [theme]);
 

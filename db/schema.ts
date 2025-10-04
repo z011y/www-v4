@@ -32,8 +32,8 @@ export const company = pgTable(
   })
 );
 
-export const title = pgTable(
-  "title",
+export const position = pgTable(
+  "position",
   {
     id: serial("id").primaryKey(),
     createdAt: timestamp("created_at", { precision: 6 }).notNull().defaultNow(),
@@ -47,7 +47,7 @@ export const title = pgTable(
     }),
   },
   (table) => ({
-    nameUnique: uniqueIndex("title_name_unique").on(table.name),
+    nameUnique: uniqueIndex("position_name_unique").on(table.name),
   })
 );
 
@@ -61,7 +61,17 @@ export const project = pgTable("project", {
   companyId: integer("company_id").references(() => company.id, {
     onUpdate: "no action",
   }),
-  titleId: integer("title_id").references(() => title.id, {
+  positionId: integer("position_id").references(() => position.id, {
+    onUpdate: "no action",
+  }),
+});
+
+export const achievement = pgTable("achievement", {
+  id: serial("id").primaryKey(),
+  createdAt: timestamp("created_at", { precision: 6 }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { precision: 6 }).notNull().defaultNow(),
+  name: varchar("name", { length: 255 }).notNull(),
+  positionId: integer("position_id").references(() => position.id, {
     onUpdate: "no action",
   }),
 });
@@ -70,5 +80,7 @@ export type InsertCompany = typeof company.$inferInsert;
 export type SelectCompany = typeof company.$inferSelect;
 export type InsertProject = typeof project.$inferInsert;
 export type SelectProject = typeof project.$inferSelect;
-export type InsertTitle = typeof title.$inferInsert;
-export type SelectTitle = typeof title.$inferSelect;
+export type InsertPosition = typeof position.$inferInsert;
+export type SelectPosition = typeof position.$inferSelect;
+export type InsertAchievement = typeof achievement.$inferInsert;
+export type SelectAchievement = typeof achievement.$inferSelect;

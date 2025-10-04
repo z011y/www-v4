@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     neon = {
-      source  = "kislerdm/neon"
+      source = "kislerdm/neon"
     }
   }
 }
@@ -20,4 +20,18 @@ resource "neon_project" "www" {
     database_name = "www"
     role_name     = "admin"
   }
+}
+
+resource "neon_branch" "dev" {
+  project_id = neon_project.www.id
+  name       = "dev"
+  parent_id  = neon_project.www.default_branch_id
+}
+
+resource "neon_endpoint" "dev" {
+  project_id               = neon_project.www.id
+  branch_id                = neon_branch.dev.id
+  type                     = "read_write"
+  autoscaling_limit_min_cu = 0.25
+  autoscaling_limit_max_cu = 0.25
 }
