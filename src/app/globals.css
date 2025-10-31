@@ -1,14 +1,12 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Font families */
-  --font-family-serif: "Jacquard 12", serif;
-  --font-family-sans: Inter, -apple-system, "Segoe UI", sans-serif;
-  --font-family-mono: "Fira Code", monospace;
+  --font-family-serif: 'Jacquard 12', serif;
+  --font-family-sans: Inter, -apple-system, 'Segoe UI', sans-serif;
+  --font-family-mono: 'Fira Code', monospace;
 
-  /* Colors */
   --color-gray-100: rgb(242, 242, 247);
   --color-gray-200: rgb(229, 229, 234);
   --color-gray-300: rgb(209, 209, 214);

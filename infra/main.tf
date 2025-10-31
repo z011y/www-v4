@@ -1,12 +1,17 @@
-terraform {
-  required_providers {
-    neon = {
-      source = "kislerdm/neon"
-    }
+resource "vercel_project" "www" {
+  name           = "www"
+  framework      = "nextjs"
+  team_id        = "team_2fV8FjqtZJCtNAILhE4tqTsH"
+  git_repository = {
+    type = "github"
+    repo = "z011y/www-v4"
   }
 }
 
-provider "neon" {}
+resource "vercel_project_domain" "www" {
+  project_id = vercel_project.www.id
+  domain     = "z011y.dev"
+}
 
 resource "neon_project" "www" {
   name                      = "www"

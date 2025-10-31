@@ -1,0 +1,1 @@
+SELECT to_date(start_date, 'Mon YYYY'), CASE WHEN end_date = 'Present' THEN NULL ELSE to_date(end_date, 'Mon YYYY') END FROM company

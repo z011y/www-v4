@@ -1,26 +1,30 @@
-import { db } from "../../db/db";
-import { company, project, position } from "../../db/schema";
+import { CompanyRepository } from "@/repositories/companyRepository";
+import { PositionRepository } from "@/repositories/positionRepository";
+import { AchievementRepository } from "@/repositories/achievementRepository";
+import { ProjectRepository } from "@/repositories/projectRepository";
 import HomeClient from "../components/HomeClient";
-
-async function getData() {
-  let companies = await db.select().from(company);
-  let projects = await db.select().from(project);
-  let positions = await db.select().from(position);
-  companies = JSON.parse(JSON.stringify(companies));
-  projects = JSON.parse(JSON.stringify(projects));
-  positions = JSON.parse(JSON.stringify(positions));
-
-  return { companies, projects, positions };
-}
+import { CareerService } from "@/services/careerService";
+import { ProjectsService } from "@/services/projectsService";
 
 export default async function Home() {
-  const { companies, projects, positions } = await getData();
+  const companyRepository = new CompanyRepository();
+  const positionRepository = new PositionRepository();
+  const achievementRepository = new AchievementRepository();
+  const projectRepository = new ProjectRepository();
 
-  return (
-    <HomeClient
-      companies={companies}
-      projects={projects}
-      positions={positions}
-    />
+  const careerService = new CareerService(
+    companyRepository,
+    positionRepository,
+    achievementRepository,
+    projectRepository,
   );
+  const careerCompanies = await careerService.getCareerCompanies();
+
+  const projectsService = new ProjectsService(
+    positionRepository,
+    projectRepository,
+  );
+  const projectDetails = await projectsService.getProjectDetails();
+
+  return <HomeClient companies={careerCompanies} projects={projectDetails} />;
 }

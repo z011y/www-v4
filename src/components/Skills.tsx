@@ -2,9 +2,9 @@ import * as Icons from "@primer/octicons-react";
 
 import Badge from "./Badge";
 
-export default function SkillsSection() {
+export default function Skills() {
   return (
-    <section id="skills" className="pt-28 pb-16">
+    <section id="skills" className="pb-16 pt-28">
       <h4 className="ml-4 lg:ml-16">Some things I&apos;m good at</h4>
       <div className="scrollbar-hidden my-4 flex gap-x-4 overflow-x-scroll px-4 lg:px-16">
         <Badge text="Leadership" icon={<Icons.CodeOfConductIcon />} />
