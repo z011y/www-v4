@@ -24,7 +24,7 @@ export default function Position({
       <div className="dark:border-gray-1000 mb-4 ml-4 border-l border-gray-200 pl-4">
         <ul className="opacity-60">
           {position.achievements.map((achievement) => (
-            <li className="my-2">{achievement.description}</li>
+            <li key={achievement.id} className="my-2">{achievement.description}</li>
           ))}
         </ul>
         <div className="flex flex-col">

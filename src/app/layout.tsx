@@ -31,23 +31,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                try {
-                  const theme = localStorage.getItem('theme');
-                  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  const shouldUseDark = theme === 'dark' || (!theme && systemPrefersDark);
-                  
-                  if (shouldUseDark) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch (e) {
-                  // Ignore errors during SSR
+                const theme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (theme === 'dark' || (!theme && systemPrefersDark)) {
+                  document.documentElement.classList.add('dark');
                 }
               })();
             `,
